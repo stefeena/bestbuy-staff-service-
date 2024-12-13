@@ -1,32 +1,32 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: staff-service-deployment
+  name: staffservice-deployment
   labels:
-    app: staff-service
+    app: staffservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: staff-service
+      app: staffservice
   template:
     metadata:
       labels:
-        app: staff-service
+        app: staffservice
     spec:
       containers:
       - name: staff-service
-        image: stefeena/staff-service:latest  # Replace with your Docker image name
+        image: stefeena/staffservice:latest  # Replace with your Docker image name
         ports:
         - containerPort: 3000  # Change based on your application
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: staff-service-service
+  name: staffservice
 spec:
   selector:
-    app: staff-service
+    app: staffservice
   ports:
     - protocol: TCP
       port: 80

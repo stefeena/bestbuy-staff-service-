@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: staff-service-deployment
+  labels:
+    app: staff-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: staff-service
+  template:
+    metadata:
+      labels:
+        app: staff-service
+    spec:
+      containers:
+      - name: staff-service
+        image: stefeena/staff-service:latest  # Replace with your Docker image name
+        ports:
+        - containerPort: 3000  # Change based on your application
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: staff-service-service
+spec:
+  selector:
+    app: staff-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000  # Exposes port 3000 internally
+  type: LoadBalancer

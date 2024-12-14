@@ -15,7 +15,7 @@ spec:
         app: staffservice
     spec:
       containers:
-      - name: staff-service
+      - name: staff-service-service
         image: stefeena/staffservice:latest  # Replace with your Docker image name
         ports:
         - containerPort: 3000  # Change based on your application
